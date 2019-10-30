@@ -1,7 +1,7 @@
 # flake8-class-attributes-order
 
 
-An extension for flake8 to validate on too complex expressions.
+An extension for flake8 that validates expression complexity.
 
 Splits code into expression and scores each according to how much one is complicated.
 Fires an error on each expression more complex than theshold.
