@@ -1,4 +1,4 @@
-# flake8-class-attributes-order
+# flake8-expression-complexity
 
 
 [![Build Status](https://travis-ci.org/best-doctor/flake8-expression-complexity.svg?branch=master)](https://travis-ci.org/best-doctor/flake8-expression-complexity)
