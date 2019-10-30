@@ -1,6 +1,12 @@
 # flake8-class-attributes-order
 
 
+[![Build Status](https://travis-ci.org/best-doctor/flake8-expression-complexity.svg?branch=master)](https://travis-ci.org/best-doctor/flake8-expression-complexity)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/maintainability)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/test_coverage)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/test_coverage)
+[![PyPI version](https://badge.fury.io/py/flake8-expression-complexity.svg)](https://badge.fury.io/py/flake8-expression-complexity)
+
+
 An extension for flake8 that validates expression complexity.
 
 Splits code into expression and scores each according to how much one is complicated.
