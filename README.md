@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/maintainability)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/test_coverage)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/test_coverage)
 [![PyPI version](https://badge.fury.io/py/flake8-expression-complexity.svg?)](https://badge.fury.io/py/flake8-expression-complexity)
-
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flake8-expression-complexity)
 
 An extension for flake8 that validates expression complexity.
 
@@ -47,7 +47,7 @@ $ flake8 --max-expression-complexity=3 test.py
 text.py:2:5: ECE001 Expression is too complex (7.0 > 3)
 ```
 
-Tested on Python 3.7.x and flake8 3.7.8.
+Tested on Python 3.6, 3.7 and flake8 3.7.8.
 
 
 ## Error codes
