@@ -33,3 +33,7 @@ if (
     and UserAction.objects.filter(user=user).last().datetime > today - datetime.timedelta(days=10)
 ):
     pass
+
+
+weird_container = []
+sublist = weird_container[10:datetime.datetime.today(), None]
