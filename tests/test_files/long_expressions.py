@@ -23,16 +23,20 @@ class Sum:
     pass
 
 
-if (
-    (user and user.is_authorized)
-    and user.subscriptions.filter(start_date__lt=today, end_date__gt=today).exists()
-    and (
-        user.total_credits_added
-        - Check.objects.filter(user=user).aggregate(Sum('price'))['check__sum']
-    )
-    and UserAction.objects.filter(user=user).last().datetime > today - datetime.timedelta(days=10)
-):
-    pass
+async def foo():
+    if (
+        (user and user.is_authorized)
+        and user.subscriptions.filter(start_date__lt=today, end_date__gt=today).exists()
+        and (
+            user.total_credits_added
+            - Check.objects.filter(user=user).aggregate(Sum('price'))['check__sum']
+        )
+        and (
+            UserAction.objects.filter(user=user).last().datetime
+            > today - datetime.timedelta(days=10)
+        )
+    ):
+        pass
 
 
 weird_container = []

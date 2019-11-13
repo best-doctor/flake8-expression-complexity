@@ -9,7 +9,8 @@ def iterate_over_expressions(node: ast.AST) -> Iterable[ast.AST]:
         ((ast.For, ), lambda n: n.iter),
     ]
     nodes_with_subnodes = (
-        ast.FunctionDef, ast.If, ast.For, ast.Module,
+        ast.FunctionDef, ast.AsyncFunctionDef,
+        ast.If, ast.For, ast.Module,
         ast.ClassDef, ast.Try, ast.With, ast.While,
     )
     for bases, subnodes_getter in additionals_subnodes_info:
