@@ -36,7 +36,12 @@ async def foo():
             > today - datetime.timedelta(days=10)
         )
     ):
+        await bar()
         pass
+
+
+async def bar():
+    return 'bar'
 
 
 weird_container = []
