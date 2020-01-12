@@ -5,17 +5,20 @@ from typing import Iterable, Callable, Tuple, List
 
 def iterate_over_expressions(node: ast.AST) -> Iterable[ast.AST]:
     additionals_subnodes_info: List[Tuple[Tuple, Callable]] = [
-        ((ast.If, ast.While), lambda n: n.test),
-        ((ast.For, ), lambda n: n.iter),
+        ((ast.If, ast.While), lambda n: [n.test]),
+        ((ast.For, ), lambda n: [n.iter]),
+        ((ast.With, ast.AsyncWith), lambda n: [s.context_expr for s in n.items]),
     ]
     nodes_with_subnodes = (
         ast.FunctionDef, ast.AsyncFunctionDef,
         ast.If, ast.For, ast.Module,
-        ast.ClassDef, ast.Try, ast.With, ast.While,
+        ast.ClassDef, ast.Try, ast.With, ast.AsyncWith,
+        ast.While,
     )
     for bases, subnodes_getter in additionals_subnodes_info:
         if isinstance(node, bases):
-            yield subnodes_getter(node)
+            for subitem in subnodes_getter(node):
+                yield subitem
     nodes_to_iter = (
         _get_try_node_children(node)
         if isinstance(node, ast.Try)

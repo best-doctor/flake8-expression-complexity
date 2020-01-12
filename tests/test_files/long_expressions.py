@@ -41,8 +41,13 @@ async def foo():
 
 
 async def bar():
-    return 'bar'
+    async with foo:
+        return 'bar'
 
 
 weird_container = []
 sublist = weird_container[10:datetime.datetime.today(), None]
+
+
+with weird_container[10:str(datetime.datetime.today().date())[:100], None]:
+    pass
