@@ -8,12 +8,12 @@ from flake8_expression_complexity.utils.django import is_django_orm_query
 
 
 class ExpressionComplexityChecker:
-    DEFAULT_MAX_EXPRESSION_COMPEXITY = 7
+    DEFAULT_MAX_EXPRESSION_COMPLEXITY = 7
 
     name = 'flake8-expression-complexity'
     version = version
 
-    max_expression_compexity = DEFAULT_MAX_EXPRESSION_COMPEXITY
+    max_expression_complexity = DEFAULT_MAX_EXPRESSION_COMPLEXITY
     ignore_django_orm_queries = False
 
     def __init__(self, tree, filename: str):
@@ -25,7 +25,7 @@ class ExpressionComplexityChecker:
         parser.add_option(
             '--max-expression-complexity',
             type=int,
-            default=cls.DEFAULT_MAX_EXPRESSION_COMPEXITY,
+            default=cls.DEFAULT_MAX_EXPRESSION_COMPLEXITY,
             parse_from_config=True,
         )
         parser.add_option(
@@ -36,7 +36,7 @@ class ExpressionComplexityChecker:
 
     @classmethod
     def parse_options(cls, options) -> None:
-        cls.max_expression_compexity = int(options.max_expression_complexity)
+        cls.max_expression_complexity = int(options.max_expression_complexity)
         cls.ignore_django_orm_queries = bool(options.ignore_django_orm_queries_complexity)
 
     def run(self) -> Generator[Tuple[int, int, str, type], None, None]:
@@ -44,11 +44,11 @@ class ExpressionComplexityChecker:
             if self.ignore_django_orm_queries and is_django_orm_query(expression):
                 continue
             complexity = get_expression_complexity(expression)
-            if complexity > self.max_expression_compexity:
+            if complexity > self.max_expression_complexity:
                 yield (
                     expression.lineno,
                     expression.col_offset,
                     f'ECE001 Expression is too complex '
-                    f'({complexity} > {self.max_expression_compexity})',
+                    f'({complexity} > {self.max_expression_complexity})',
                     type(self),
                 )
