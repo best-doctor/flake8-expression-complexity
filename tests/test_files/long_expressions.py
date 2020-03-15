@@ -41,6 +41,7 @@ async def foo():
 
 
 async def bar():
+    global user
     async with foo:
         return 'bar'
 

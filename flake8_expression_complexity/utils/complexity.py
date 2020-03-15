@@ -6,6 +6,47 @@ from astpretty import pprint
 
 from flake8_expression_complexity.utils.iterables import max_with_default
 
+TYPES_MAP = [
+    (ast.UnaryOp, 'unary_op'),
+    (
+        (
+            ast.Expr, ast.Return, ast.Starred, ast.Index,
+            ast.Yield, ast.YieldFrom, ast.FormattedValue,
+        ),
+        'item_with_value',
+    ),
+    (ast.Assert, 'assert'),
+    (ast.Delete, 'delete'),
+    (ast.Assign, 'assign'),
+    ((ast.AugAssign, ast.AnnAssign), 'featured_assign'),
+    (ast.Call, 'call'),
+    (ast.Await, 'await'),
+    ((ast.List, ast.Set, ast.Tuple), 'sized'),
+    (ast.Dict, 'dict'),
+    (ast.DictComp, 'dict_comprehension'),
+    ((ast.ListComp, ast.GeneratorExp, ast.SetComp), 'simple_comprehensions'),
+    (ast.comprehension, 'base_comprehension'),
+    (ast.Compare, 'compare'),
+    (ast.Subscript, 'subscript'),
+    (ast.Slice, 'slice'),
+    (ast.ExtSlice, 'ext_slice'),
+    (ast.BinOp, 'binary_op'),
+    (ast.Lambda, 'lambda'),
+    (ast.IfExp, 'if_expr'),
+    (ast.BoolOp, 'bool_op'),
+    (ast.Attribute, 'attribute'),
+    (ast.JoinedStr, 'fstring'),
+    (ast.ClassDef, 'classdef'),
+    (
+        (
+            ast.Name, ast.Import, ast.Str, ast.Num, ast.NameConstant, ast.Bytes, ast.Nonlocal,
+            ast.ImportFrom, ast.Pass, ast.Raise, ast.Break, ast.Continue, type(None),
+            ast.Ellipsis, ast.Global,
+        ),
+        'simple_type',
+    ),
+]
+
 
 def get_expression_complexity(node: ast.AST) -> float:
     info = get_expression_part_info(node)
@@ -46,48 +87,8 @@ def get_complexity_increase_for_node_type(node_type_sid: str) -> float:
 
 
 def get_expression_part_info(node: ast.AST) -> Mapping[str, Any]:
-    types_map = [
-        (ast.UnaryOp, 'unary_op'),
-        (
-            (
-                ast.Expr, ast.Return, ast.Starred, ast.Index,
-                ast.Yield, ast.YieldFrom, ast.FormattedValue,
-            ),
-            'item_with_value',
-        ),
-        (ast.Assert, 'assert'),
-        (ast.Delete, 'delete'),
-        (ast.Assign, 'assign'),
-        ((ast.AugAssign, ast.AnnAssign), 'featured_assign'),
-        (ast.Call, 'call'),
-        (ast.Await, 'await'),
-        ((ast.List, ast.Set, ast.Tuple), 'sized'),
-        (ast.Dict, 'dict'),
-        (ast.DictComp, 'dict_comprehension'),
-        ((ast.ListComp, ast.GeneratorExp, ast.SetComp), 'simple_comprehensions'),
-        (ast.comprehension, 'base_comprehension'),
-        (ast.Compare, 'compare'),
-        (ast.Subscript, 'subscript'),
-        (ast.Slice, 'slice'),
-        (ast.ExtSlice, 'ext_slice'),
-        (ast.BinOp, 'binary_op'),
-        (ast.Lambda, 'lambda'),
-        (ast.IfExp, 'if_expr'),
-        (ast.BoolOp, 'bool_op'),
-        (ast.Attribute, 'attribute'),
-        (ast.JoinedStr, 'fstring'),
-        (ast.ClassDef, 'classdef'),
-        (
-            (
-                ast.Name, ast.Import, ast.Str, ast.Num, ast.NameConstant, ast.Bytes, ast.Nonlocal,
-                ast.ImportFrom, ast.Pass, ast.Raise, ast.Break, ast.Continue, type(None),
-                ast.Ellipsis,
-            ),
-            'simple_type',
-        ),
-    ]
     node_type_sid = None
-    for types, node_type_name in types_map:
+    for types, node_type_name in TYPES_MAP:
         if isinstance(node, types):  # type: ignore
             node_type_sid = node_type_name
             break
