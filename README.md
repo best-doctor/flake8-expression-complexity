@@ -1,6 +1,5 @@
 # flake8-expression-complexity
 
-
 [![Build Status](https://travis-ci.org/best-doctor/flake8-expression-complexity.svg?branch=master)](https://travis-ci.org/best-doctor/flake8-expression-complexity)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/maintainability)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/test_coverage)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/test_coverage)
@@ -18,12 +17,11 @@ Since Django ORM queries can produce long and readable expressions,
 checker can skip them. To enable this behaviour,
 use `--ignore-django-orm-queries-complexity` option.
 
-
-
 ## Installation
 
-    pip install flake8-expression-complexity
-
+```terminal
+pip install flake8-expression-complexity
+```
 
 ## Example
 
@@ -38,8 +36,8 @@ if (
     and UserAction.objects.filter(user=user).last().datetime > today - datetime.timedelta(days=10)
 ):
     ...
-
 ```
+
 Usage:
 
 ```terminal
@@ -47,27 +45,27 @@ $ flake8 --max-expression-complexity=3 test.py
 text.py:2:5: ECE001 Expression is too complex (7.0 > 3)
 ```
 
-Tested on Python 3.6, 3.7 and flake8 3.7.8.
-
-
 ## Error codes
 
 | Error code |                     Description   |
 |:----------:|:---------------------------------:|
 |   ECE001   | Expression is too complex (X > Y) |
 
-
 ## Contributing
 
 We would love you to contribute to our project. It's simple:
 
-1. Create an issue with bug you found or proposal you have. Wait for approve from maintainer.
-2. Create a pull request. Make sure all checks are green.
-3. Fix review comments if any.
-4. Be awesome.
+1. Create an issue with bug you found or proposal you have.
+   Wait for approve from maintainer.
+1. Create a pull request. Make sure all checks are green.
+1. Fix review comments if any.
+1. Be awesome.
 
 Here are useful tips:
 
-- You can run all checks and tests with `make check`. Please do it before TravisCI does.
-- We use [BestDoctor python styleguide](https://github.com/best-doctor/guides/blob/master/guides/python_styleguide.md). Sorry, styleguide is available only in Russian for now.
-- We respect [Django CoC](https://www.djangoproject.com/conduct/). Make soft, not bullshit.
+- You can run all checks and tests with `make check`.
+  Please do it before TravisCI does.
+- We use [BestDoctor python styleguide](https://github.com/best-doctor/guides/blob/master/guides/python_styleguide.md).
+  Sorry, styleguide is available only in Russian for now.
+- We respect [Django CoC](https://www.djangoproject.com/conduct/).
+  Make soft, not bullshit.
