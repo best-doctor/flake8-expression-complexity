@@ -1,4 +1,5 @@
 import ast
+import sys
 import itertools
 from typing import Mapping, Any, List
 
@@ -47,6 +48,11 @@ TYPES_MAP = [
     ),
 ]
 
+if sys.version_info >= (3, 8):
+    TYPES_MAP.append(
+        (ast.NamedExpr, 'walrus'),
+    )
+
 
 def get_expression_complexity(node: ast.AST) -> float:
     info = get_expression_part_info(node)
@@ -82,6 +88,7 @@ def get_complexity_increase_for_node_type(node_type_sid: str) -> float:
         'attribute': 1,
         'simple_type': 0,
         'fstring': 2,
+        'walrus': 2,
     }
     return nodes_scores_map[node_type_sid]
 
@@ -128,5 +135,6 @@ def _get_sub_nodes(node: Any, node_type_sid: str) -> List[ast.AST]:
         'fstring': lambda n: n.values,
         'attribute': lambda n: [n.value],
         'simple_type': lambda n: [],
+        'walrus': lambda n: [n.target, n.value],
     }
     return subnodes_map[node_type_sid](node)
