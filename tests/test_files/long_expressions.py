@@ -52,3 +52,8 @@ sublist = weird_container[10:datetime.datetime.today(), None]
 
 with weird_container[10:str(datetime.datetime.today().date())[:100], None]:
     pass
+
+
+async def async_for_function():
+    async for i in range(10):
+        print(i)
