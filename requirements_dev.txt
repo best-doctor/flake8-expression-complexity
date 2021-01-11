@@ -25,8 +25,7 @@ flake8-string-format==0.3.0
 flake8-tidy-imports==4.1.0
 flake8-typing-imports==1.9.0
 flake8-variables-names==0.0.3
-mypy==0.770
-mypy-extensions==0.4.3
+mypy==0.790
 safety==1.9.0
 dlint==0.10.3
 flake8-if-statements==0.1.0
