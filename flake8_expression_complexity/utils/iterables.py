@@ -1,10 +1,7 @@
-from typing import Iterable, Optional, Union, TypeVar
+from typing import Iterable, Optional, Union, Any
 
 
-T = TypeVar('T')
-
-
-def max_with_default(items: Iterable[T], default: Optional[T] = None) -> Union[T, int]:
+def max_with_default(items: Iterable[Any], default: Optional[Any] = None) -> Union[Any]:
     default = default or 0
     items = list(items)
     if not items and default is not None:
