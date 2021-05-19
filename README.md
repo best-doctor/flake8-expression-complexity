@@ -1,6 +1,6 @@
 # flake8-expression-complexity
 
-[![Build Status](https://travis-ci.org/best-doctor/flake8-expression-complexity.svg?branch=master)](https://travis-ci.org/best-doctor/flake8-expression-complexity)
+[![Build Status](https://github.com/best-doctor/flake8-expression-complexity/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/best-doctor/flake8-expression-complexity/actions/workflows/build.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/maintainability)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/test_coverage)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/test_coverage)
 [![PyPI version](https://badge.fury.io/py/flake8-expression-complexity.svg?)](https://badge.fury.io/py/flake8-expression-complexity)
