@@ -52,3 +52,8 @@ sublist = weird_container[10:datetime.datetime.today(), None]
 
 with weird_container[10:str(datetime.datetime.today().date())[:100], None]:
     pass
+
+
+async def async_for_function():
+    async for i in range(5 * len(str(len(range(2 * 5))) * 2[::-1][0:2] + "foo") / 3):
+        pass

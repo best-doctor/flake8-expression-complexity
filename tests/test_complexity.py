@@ -6,7 +6,7 @@ from conftest import run_validator_for_test_file
 
 def test_fails():
     errors = run_validator_for_test_file('long_expressions.py', max_expression_complexity=3)
-    assert len(errors) == 4
+    assert len(errors) == 5
 
 
 @pytest.mark.skipif(sys.version_info < (3, 8), reason='runs only for python 3.8+')
