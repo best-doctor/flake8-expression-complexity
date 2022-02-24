@@ -20,7 +20,7 @@ flake8-polyfill==1.0.2
 flake8-print==3.1.4
 flake8-quotes==3.0.0
 flake8-string-format==0.3.0
-flake8-tidy-imports==4.6.0
+flake8-tidy-imports==4.5.0
 flake8-typing-imports==1.9.0
 flake8-variables-names==0.0.3
 mypy==0.921
