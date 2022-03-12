@@ -13,3 +13,9 @@ def test_fails():
 def test_walrus():
     errors = run_validator_for_test_file('walrus.py', max_expression_complexity=1)
     assert len(errors) == 1
+
+
+@pytest.mark.skipif(sys.version_info < (3, 10), reason='runs only for python 3.10+')
+def test_match():
+    errors = run_validator_for_test_file('match.py', max_expression_complexity=1)
+    assert len(errors) == 1
