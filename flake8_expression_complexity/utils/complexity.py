@@ -53,6 +53,14 @@ if sys.version_info >= (3, 8):
         (ast.NamedExpr, 'walrus'),
     )
 
+if sys.version_info >= (3, 10):
+    TYPES_MAP.extend(
+        [
+            (ast.Match, 'match'),
+            (ast.match_case, 'case'),
+        ]
+    )
+
 
 def get_expression_complexity(node: ast.AST) -> float:
     info = get_expression_part_info(node)
@@ -89,6 +97,8 @@ def get_complexity_increase_for_node_type(node_type_sid: str) -> float:
         'simple_type': 0,
         'fstring': 2,
         'walrus': 2,
+        'match': 1,
+        'case': 1,
     }
     return nodes_scores_map[node_type_sid]
 
@@ -136,5 +146,7 @@ def _get_sub_nodes(node: Any, node_type_sid: str) -> List[ast.AST]:
         'attribute': lambda n: [n.value],
         'simple_type': lambda n: [],
         'walrus': lambda n: [n.target, n.value],
+        'match': lambda n: n.cases,
+        'case': lambda n: [],
     }
     return subnodes_map[node_type_sid](node)
