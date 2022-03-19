@@ -45,7 +45,7 @@ setup(
     version=get_version(),
     author='Ilya Lebedev',
     author_email='melevir@gmail.com',
-    install_requires=['astpretty', 'flake8', 'setuptools'],
+    install_requires=['astpretty', 'flake8'],
     entry_points={
         'flake8.extension': [
             'ECE = flake8_expression_complexity.checker:ExpressionComplexityChecker',
