@@ -40,9 +40,9 @@ TYPES_MAP = [
     (ast.ClassDef, 'classdef'),
     (
         (
-            ast.Name, ast.Import, ast.Str, ast.Num, ast.NameConstant, ast.Bytes, ast.Nonlocal,
+            ast.Name, ast.Import, ast.Nonlocal,
             ast.ImportFrom, ast.Pass, ast.Raise, ast.Break, ast.Continue, type(None),
-            ast.Ellipsis, ast.Global,
+            ast.Constant, ast.Global,
         ),
         'simple_type',
     ),
