@@ -1,0 +1,102 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "flake8-expression-complexity"
+description = "A flake8 extension that checks expressions complexity"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Ilya Lebedev", email = "melevir@gmail.com" },
+]
+requires-python = ">=3.10"
+keywords = ["flake8"]
+classifiers = [
+    "Environment :: Console",
+    "Framework :: Flake8",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Documentation",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Quality Assurance",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "flake8>=4",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/best-doctor/flake8-expression-complexity"
+Source = "https://github.com/best-doctor/flake8-expression-complexity"
+
+[project.entry-points."flake8.extension"]
+ECE = "flake8_expression_complexity.checker:ExpressionComplexityChecker"
+
+[tool.hatch.version]
+path = "flake8_expression_complexity/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["flake8_expression_complexity"]
+
+[dependency-groups]
+dev = [
+    "flake8-pyproject",
+    "pytest",
+    "pytest-cov",
+    "pydocstyle",
+    "flake8-2020",
+    "flake8-annotations-complexity",
+    "flake8-annotations-coverage",
+    "flake8-blind-except",
+    "flake8-broken-line",
+    "flake8-bugbear",
+    "flake8-builtins",
+    "flake8-class-attributes-order",
+    "flake8-comprehensions",
+    "flake8-debugger",
+    "flake8-docstrings",
+    "flake8-eradicate",
+    "flake8-fixme",
+    "flake8-functions",
+    "flake8-if-statements",
+    "flake8-print",
+    "flake8-quotes",
+    "flake8-string-format",
+    "flake8-tidy-imports",
+    "flake8-variables-names",
+    "dlint",
+    "mypy",
+    "pip-audit",
+    "pre-commit",
+]
+
+[tool.flake8]
+ignore = ["W503", "P103", "D"]
+max-line-length = 100
+use_class_attributes_order_strict_mode = true
+max_function_length = 50
+max-complexity = 7
+per-file-ignores = [
+    "__init__.py:F401",
+    "tests/*:TAE001",
+    "flake8_expression_complexity/utils/ast.py:A005",
+]
+max-annotations-complexity = 4
+exclude = ["node_modules", "env", "venv", ".venv", "tests/test_files/"]
+var_names_exclude_pathes = ["node_modules", "env", "venv"]
+assert_allowed_in_pathes = ["tests", "migrations", "env", "venv"]
+adjustable-default-max-complexity = 8
+ban-relative-imports = true
+min-coverage-percents = 100
+
+[tool.mypy]
+ignore_missing_imports = true
+allow_redefinition = true
+exclude = "build|env|venv.*|migrations|tests"

@@ -1,20 +1,26 @@
+install:
+	uv sync
+
 test:
-	python -m pytest
+	uv run pytest
 
 coverage:
-	python -m pytest --cov=flake8_expression_complexity --cov-report=xml
+	uv run pytest --cov=flake8_expression_complexity --cov-report=xml
 
 types:
-	mypy .
+	uv run mypy .
 
 style:
-	flake8 .
+	uv run flake8 .
 
 readme:
-	mdl README.md
+	uv run pre-commit run markdownlint-cli2 --files README.md CHANGELOG.md
 
 requirements:
-	safety check -r requirements_dev.txt
+	uv run pip-audit
+
+precommit:
+	uv run pre-commit run --all-files
 
 check:
 	make style

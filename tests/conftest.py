@@ -6,7 +6,7 @@ from flake8_expression_complexity.checker import ExpressionComplexityChecker
 
 def run_validator_for_test_file(
     filename: str,
-    max_expression_complexity: int = None,
+    max_expression_complexity: int | None = None,
     ignore_django_orm_queries: bool = True,
 ):
     test_file_path = os.path.join(

@@ -1,8 +1,6 @@
 # flake8-expression-complexity
 
 [![Build Status](https://github.com/best-doctor/flake8-expression-complexity/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/best-doctor/flake8-expression-complexity/actions/workflows/build.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/maintainability)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f85c1fd2ad4af63d93b6/test_coverage)](https://codeclimate.com/github/best-doctor/flake8-expression-complexity/test_coverage)
 [![PyPI version](https://badge.fury.io/py/flake8-expression-complexity.svg?)](https://badge.fury.io/py/flake8-expression-complexity)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/flake8-expression-complexity)
 
@@ -22,6 +20,8 @@ use `--ignore-django-orm-queries-complexity` option.
 ```terminal
 pip install flake8-expression-complexity
 ```
+
+Requires Python 3.10 to 3.14.
 
 ## Example
 
@@ -63,8 +63,12 @@ We would love you to contribute to our project. It's simple:
 
 Here are useful tips:
 
+- This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
+  Run `make install` to set up a local environment.
 - You can run all checks and tests with `make check`.
-  Please do it before TravisCI does.
+  Please do it before CI does.
+- Install the [pre-commit](https://pre-commit.com/) hooks with
+  `uv run pre-commit install` to catch issues before you commit.
 - We use [BestDoctor python styleguide](https://github.com/best-doctor/guides/blob/master/guides/en/python_styleguide.md).
 - We respect [Django CoC](https://www.djangoproject.com/conduct/).
   Make soft, not bullshit.

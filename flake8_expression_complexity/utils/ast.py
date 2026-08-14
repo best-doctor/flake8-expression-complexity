@@ -1,20 +1,21 @@
 import ast
 import itertools
-from typing import Iterable, Callable, Tuple, List
+from typing import Callable, Iterable
 
 
-def iterate_over_expressions(node: ast.AST) -> Iterable[ast.AST]:
-    additionals_subnodes_info: List[Tuple[Tuple, Callable]] = [
+def iterate_over_expressions(node: ast.AST) -> Iterable[ast.expr | ast.stmt]:
+    additionals_subnodes_info: list[tuple[tuple, Callable]] = [
         ((ast.If, ast.While), lambda n: [n.test]),
         ((ast.For, ), lambda n: [n.iter]),
         ((ast.AsyncFor, ), lambda n: [n.iter]),
         ((ast.With, ast.AsyncWith), lambda n: [s.context_expr for s in n.items]),
+        ((ast.Match, ), lambda n: [n.subject]),
     ]
     nodes_with_subnodes = (
         ast.FunctionDef, ast.AsyncFunctionDef,
         ast.If, ast.For, ast.AsyncFor, ast.Module,
         ast.ClassDef, ast.Try, ast.With, ast.AsyncWith,
-        ast.While,
+        ast.While, ast.Match,
     )
     for bases, subnodes_getter in additionals_subnodes_info:
         if isinstance(node, bases):
@@ -23,6 +24,8 @@ def iterate_over_expressions(node: ast.AST) -> Iterable[ast.AST]:
     nodes_to_iter = (
         _get_try_node_children(node)
         if isinstance(node, ast.Try)
+        else _get_match_node_children(node)
+        if isinstance(node, ast.Match)
         else getattr(node, 'body', [])
     )
     for child_node in nodes_to_iter:
@@ -35,3 +38,10 @@ def iterate_over_expressions(node: ast.AST) -> Iterable[ast.AST]:
 
 def _get_try_node_children(try_node: ast.Try):
     return itertools.chain(try_node.body, try_node.finalbody, *[n.body for n in try_node.handlers])
+
+
+def _get_match_node_children(match_node: ast.Match) -> Iterable[ast.expr | ast.stmt]:
+    for case in match_node.cases:
+        if case.guard is not None:
+            yield case.guard
+        yield from case.body

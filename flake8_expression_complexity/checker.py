@@ -1,5 +1,4 @@
-from typing import Generator, Tuple
-
+from typing import Generator
 
 from flake8_expression_complexity import __version__ as version
 from flake8_expression_complexity.utils.ast import iterate_over_expressions
@@ -39,7 +38,7 @@ class ExpressionComplexityChecker:
         cls.max_expression_complexity = int(options.max_expression_complexity)
         cls.ignore_django_orm_queries = bool(options.ignore_django_orm_queries_complexity)
 
-    def run(self) -> Generator[Tuple[int, int, str, type], None, None]:
+    def run(self) -> Generator[tuple[int, int, str, type], None, None]:
         for expression in iterate_over_expressions(self.tree):
             if self.ignore_django_orm_queries and is_django_orm_query(expression):
                 continue

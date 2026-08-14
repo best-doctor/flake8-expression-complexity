@@ -1,9 +1,9 @@
-from typing import Iterable, Optional, Union, Any
+from typing import Any, Iterable
 
 
-def max_with_default(items: Iterable[Any], default: Optional[Any] = None) -> Union[Any]:
+def max_with_default(items: Iterable[Any], default: Any | None = None) -> Any:
     default = default or 0
     items = list(items)
-    if not items and default is not None:
+    if not items:
         return default
     return max(items)
