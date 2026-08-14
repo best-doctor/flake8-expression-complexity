@@ -1,0 +1,77 @@
+tests/conftest.py
+  s_7ce8ea4b642cf3::t_75f50150af302d 9
+flake8_expression_complexity/checker.py
+  s_7ce8ea4b642cf3::t_89d983ea9d040d 41
+  s_7ce8ea4b642cf3::t_694c12ddc50236 1
+.github/workflows/build_pr.yml
+  s_7ce8ea4b642cf3::t_4dcad1077f45a2 12,14-16,19,21,24-25
+pyproject.toml
+  s_7ce8ea4b642cf3::t_55c6fbd25fc74f 89
+  s_7ce8ea4b642cf3::t_ac25c8512cee1f 92
+  s_7ce8ea4b642cf3::t_d4e78b18ba32cc 1-88,90-91,93-102
+tests/test_complexity.py
+  s_7ce8ea4b642cf3::t_6fdf3956356346 34-39
+  s_7ce8ea4b642cf3::t_dc143a7605c03e 1,6-7,23-33,40-51,72-91
+  s_7ce8ea4b642cf3::t_28db835c1efc44 22
+  s_7ce8ea4b642cf3::t_fc1e587944b575 52-71
+  s_7ce8ea4b642cf3::t_c6a4ca53ee7af7 8
+flake8_expression_complexity/utils/ast.py
+  s_7ce8ea4b642cf3::t_a9586352485714 3,7
+  s_7ce8ea4b642cf3::t_53deed14a8d94e 6
+  s_7ce8ea4b642cf3::t_510423b4327e58 12,18,27-28,41-47
+.github/workflows/build.yml
+  s_7ce8ea4b642cf3::t_652af17cc8a45c 27
+  s_7ce8ea4b642cf3::t_6966e81d9567f6 12,14-16,19,21,24-26
+flake8_expression_complexity/__init__.py
+  s_7ce8ea4b642cf3::t_a2b2b3dacb4435 1
+flake8_expression_complexity/utils/complexity.py
+  s_7ce8ea4b642cf3::t_f111d999349e5c 3
+  s_7ce8ea4b642cf3::t_230955cc24aaf3 10,34,37,39
+  s_7ce8ea4b642cf3::t_04fa9613e2ad7a 99
+  s_7ce8ea4b642cf3::t_2e35d597993229 91
+Makefile
+  s_7ce8ea4b642cf3::t_e3fce9a4939ff6 17
+  s_7ce8ea4b642cf3::t_cdcd365054b3c7 1-3,5,8,11,14,20-23
+.github/workflows/publish.yml
+  s_7ce8ea4b642cf3::t_26c72ce39c85cd 13,15-25,30-35
+  s_7ce8ea4b642cf3::t_b54a0157580678 37-38
+README.md
+  s_7ce8ea4b642cf3::t_0c3e245d073228 24-25
+  s_7ce8ea4b642cf3::t_59e3d22204f1bb 66-67,69-71
+.markdownlint.jsonc
+  s_7ce8ea4b642cf3::t_00fff0d3b05e43 3-4
+  s_7ce8ea4b642cf3::t_819c8c99dc74f9 1-2,5
+CHANGELOG.md
+  s_7ce8ea4b642cf3::t_589a36dd390b70 27-28
+  s_7ce8ea4b642cf3::t_93dfc4648f5741 10-11
+  s_7ce8ea4b642cf3::t_2b1f9e36e922f1 51-55
+  s_7ce8ea4b642cf3::t_3f64115770b26d 132-133
+  s_7ce8ea4b642cf3::t_b0eea1734cc763 1-9,12-26,29-50,56-131,134-142
+.pre-commit-config.yaml
+  s_7ce8ea4b642cf3::t_7a3d74f1c7c317 33
+  s_7ce8ea4b642cf3::t_8ce579d08251fd 30
+  s_7ce8ea4b642cf3::t_f6b8517d1c472f 20
+  s_7ce8ea4b642cf3::t_90c9098f6191dd 1-19,21-29,31-32
+tests/test_files/async_expressions.py
+  s_7ce8ea4b642cf3::t_1aade7c55d1749 1-17
+flake8_expression_complexity/utils/iterables.py
+  s_7ce8ea4b642cf3::t_a154d04d6bc962 1,4,7
+uv.lock
+  s_7ce8ea4b642cf3::t_b01259514184be 1-1640
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "2b754e746b772e1167a1b8781197daba56bca282",
+  "prompts": {},
+  "sessions": {
+    "s_7ce8ea4b642cf3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2a7f047-9e25-414b-8a4a-18bfab5e108b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Vladislav Katolyk <v.katolyk@bestdoctor.ru>"
+    }
+  }
+}
