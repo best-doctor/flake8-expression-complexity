@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-08-14
+
+### Fixed
+
+- CI workflows referenced `astral-sh/setup-uv@v10`, which doesn't exist — the action only
+  publishes exact tags (`v10.0.1`), not a floating major-version tag. Pinned to `v10.0.1`.
+  This is also why `v0.1.0` never actually reached PyPI: `build` failed before `publish` ran.
+- The `type X = ...` statement (PEP 695 type aliases, Python 3.12+) crashed the checker
+  outright with `AssertionError: should always get node type`, since `ast.TypeAlias` wasn't
+  recognized at all (reported in
+  [#24](https://github.com/best-doctor/flake8-expression-complexity/pull/24)). The aliased
+  value and any bound on a generic type parameter are now scored like any other expression.
+
 ## [0.1.0] - 2026-08-14
 
 ### Changed
@@ -129,7 +142,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release of the `ECE001` expression complexity check.
 
-[Unreleased]: https://github.com/best-doctor/flake8-expression-complexity/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/best-doctor/flake8-expression-complexity/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/best-doctor/flake8-expression-complexity/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/best-doctor/flake8-expression-complexity/compare/v0.0.11...v0.1.0
 [0.0.11]: https://github.com/best-doctor/flake8-expression-complexity/compare/v0.0.10...v0.0.11
 [0.0.10]: https://github.com/best-doctor/flake8-expression-complexity/compare/v0.0.9...v0.0.10

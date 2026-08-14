@@ -1,5 +1,6 @@
 import ast
 import itertools
+import sys
 from typing import Any, Mapping
 
 from flake8_expression_complexity.utils.iterables import max_with_default
@@ -42,6 +43,11 @@ TYPES_MAP = [
     ),
 ]
 
+if sys.version_info >= (3, 12):
+    # ast.TypeAlias (the `type X = ...` statement, PEP 695) doesn't exist before Python 3.12,
+    # which is above this project's minimum supported version.
+    TYPES_MAP.append((ast.TypeAlias, 'type_alias'))
+
 
 def get_expression_complexity(node: ast.AST) -> float:
     info = get_expression_part_info(node)
@@ -77,6 +83,7 @@ def get_complexity_increase_for_node_type(node_type_sid: str) -> float:
         'simple_type': 0,
         'fstring': 2,
         'walrus': 2,
+        'type_alias': 1,
     }
     return nodes_scores_map[node_type_sid]
 
@@ -122,5 +129,8 @@ def _get_sub_nodes(node: Any, node_type_sid: str) -> list[ast.AST]:
         'attribute': lambda n: [n.value],
         'simple_type': lambda n: [],
         'walrus': lambda n: [n.target, n.value],
+        'type_alias': lambda n: [n.value] + [
+            tp.bound for tp in n.type_params if getattr(tp, 'bound', None) is not None
+        ],
     }
     return subnodes_map[node_type_sid](node)

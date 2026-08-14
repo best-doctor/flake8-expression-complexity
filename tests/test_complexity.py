@@ -1,4 +1,5 @@
 import ast
+import sys
 
 import pytest
 from conftest import run_validator_for_test_file
@@ -25,6 +26,12 @@ def test_match():
 def test_async_expressions():
     errors = run_validator_for_test_file('async_expressions.py', max_expression_complexity=1)
     assert len(errors) == 3
+
+
+@pytest.mark.skipif(sys.version_info < (3, 12), reason='runs only for python 3.12+')
+def test_type_alias():
+    errors = run_validator_for_test_file('type_alias.py', max_expression_complexity=1)
+    assert len(errors) == 1
 
 
 @pytest.mark.parametrize(
@@ -60,6 +67,28 @@ def test_get_expression_complexity_for_match_constructs(source, expected_complex
     # Regression test: the match subject and each case's guard/body must be walked
     # independently instead of collapsing the whole `match` statement into a flat score
     # that ignored how complex the subject or branches actually were.
+    tree = ast.parse(source)
+    expressions = list(iterate_over_expressions(tree))
+
+    complexities = [get_expression_complexity(expression) for expression in expressions]
+
+    assert max(complexities) == expected_complexity
+
+
+@pytest.mark.skipif(sys.version_info < (3, 12), reason='runs only for python 3.12+')
+@pytest.mark.parametrize(
+    ('source', 'expected_complexity'),
+    [
+        pytest.param('type Integer = int', 1, id='simple'),
+        pytest.param('type Alias = list[dict[str, int]]', 4, id='complex_value'),
+        pytest.param('type Alias[T: (a and b)] = list[T]', 2, id='bound'),
+    ],
+)
+def test_get_expression_complexity_for_type_alias_constructs(source, expected_complexity):
+    # Regression test for https://github.com/best-doctor/flake8-expression-complexity/pull/24:
+    # the `type X = ...` statement (PEP 695, Python 3.12+) used to crash the checker outright
+    # (AssertionError: should always get node type) because ast.TypeAlias wasn't recognized
+    # at all. Now the aliased value and any bound on a generic type parameter are scored.
     tree = ast.parse(source)
     expressions = list(iterate_over_expressions(tree))
 
