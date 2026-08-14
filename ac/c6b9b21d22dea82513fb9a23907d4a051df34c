@@ -1,0 +1,42 @@
+.github/workflows/build_pr.yml
+  s_7ce8ea4b642cf3::t_8426aa61305561 16
+.github/workflows/build.yml
+  s_7ce8ea4b642cf3::t_8426aa61305561 16
+CHANGELOG.md
+  s_7ce8ea4b642cf3::t_aecdb19fc76fe8 12-15,17-22
+  s_7ce8ea4b642cf3::t_40aa6efdf80c45 10-11,16
+  s_7ce8ea4b642cf3::t_97ecb8e9483123 145-146
+.github/workflows/publish.yml
+  s_7ce8ea4b642cf3::t_8426aa61305561 17,32
+tests/test_files/type_alias.py
+  s_7ce8ea4b642cf3::t_1919d4ae3e060c 1-2
+tests/test_complexity.py
+  s_7ce8ea4b642cf3::t_b8729a596b27cd 78-92
+  s_7ce8ea4b642cf3::t_1e48e62aaccac7 2
+  s_7ce8ea4b642cf3::t_77af23e1c31dbb 31-36
+  s_7ce8ea4b642cf3::t_05f02e922537d7 75-77
+  s_7ce8ea4b642cf3::t_a15d44470b9c7b 71-74
+flake8_expression_complexity/__init__.py
+  s_7ce8ea4b642cf3::t_a13f7cdb6a1d07 1
+flake8_expression_complexity/utils/complexity.py
+  s_7ce8ea4b642cf3::t_69e4080f0afa44 132-134
+  s_7ce8ea4b642cf3::t_5f0c55bf06da4d 3
+  s_7ce8ea4b642cf3::t_a17eaff1bb672f 46-50
+  s_7ce8ea4b642cf3::t_938d88f5c6514d 86
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "acc6b9b21d22dea82513fb9a23907d4a051df34c",
+  "prompts": {},
+  "sessions": {
+    "s_7ce8ea4b642cf3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f2a7f047-9e25-414b-8a4a-18bfab5e108b",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Vladislav Katolyk <v.katolyk@bestdoctor.ru>"
+    }
+  }
+}
